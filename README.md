@@ -1,6 +1,7 @@
 # codo-agent-server
 暂时只开放二进制文件，star 过万再开源
 
+## 服务端配置文件  `config.yaml`
 ```
 WS-PORT: 9999
 PORT: 8080
@@ -34,9 +35,15 @@ create database `codo_agent_server` default character set utf8mb4 collate utf8mb
 codo-agent-server migrate  
 ```
 
-## 启动
+## 启动 server
 ```
 codo-agent-server   --config-file=config.yaml
-
+```
+## 启动 proxy  （可选）
+```
+codo-agent --url ws://127.0.0.1:9999/api/v1/codo/agent?clientId=codo-proxy -s --log-dir /data/logs/codo  --client-type master
+```
+## 启动 agent
+```
 codo-agent --url ws://127.0.0.1:9999/api/v1/codo/agent?clientId=codo-test -s --log-dir /data/logs/codo --row-limit 2000 --client-type normal
 ```
