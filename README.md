@@ -46,4 +46,5 @@ codo-agent --url ws://127.0.0.1:9999/api/v1/codo/agent?clientId=codo-proxy -s --
 ## 启动 agent
 ```
 codo-agent --url ws://127.0.0.1:9999/api/v1/codo/agent?clientId=codo-test -s --log-dir /data/logs/codo --row-limit 2000 --client-type normal
+codo-agent --url ws://127.0.0.1:20800/api/v1/codo/agent?clientId=codo-test -s --log-dir /data/logs/codo --row-limit 2000 --client-type normal
 ```
