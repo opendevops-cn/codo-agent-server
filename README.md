@@ -2,9 +2,11 @@
 暂时只开放二进制文件，star 过万再开源
 
 ## 服务端配置文件  `config.yaml`
+切记只有WS端口可以对外
 ```
-WS-PORT: 9999
 PORT: 8080
+WS-PORT: 9999
+PPROF-PORT: 9995
 BIND-ADDRESS: 0.0.0.0
 AMQP-URI: amqp://admin:123456@127.0.0.1:5672/
 ROOT-PATH: /opt/codo/agent-server
