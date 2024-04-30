@@ -8,27 +8,38 @@ PORT: 8080
 WS-PORT: 9999
 PPROF-PORT: 9995
 BIND-ADDRESS: 0.0.0.0
-AMQP-URI: amqp://admin:123456@127.0.0.1:5672/
-ROOT-PATH: /opt/codo/agent-server
+# 新版配置
+MQCONFIG:
+  ENABLED: true
+  SCHEMA: "amqp"
+  HOST: "127.0.0.1"
+  PORT: 5672
+  USERNAME: "admin"
+  PASSWORD: "123456"
+  VHOST: "codo"
+ROOT-PATH: E:\go\src\agent-server
 LOG-LEVEL: DEBUG
 DB-CONFIG:
   DB-TYPE: mysql
   DB-USER: root
-  DB-PASSWORD: root@123456
+  DB-PASSWORD: 123456
   DB-HOST: 127.0.0.1
   DB-NAME: codo_agent_server
   DB-TABLE-PREFIX: codo_
   DB-FILE: ""
   DB-PORT: 3306
 REDIS:
-  R-ADDRESS: 127.0.0.1:6379
-  R-PASSWORD: "1111"
+  R-HOST: 127.0.0.1
+  R-PORT: 6379
+  R-PASSWORD: ""
   R-DB: 1
 PUBLISH:
-  P-ADDRESS: 127.0.0.1:6379
-  P-PASSWORD: "1111"
+  P-HOST: 127.0.0.1
+  P-PORT: 6379
+  P-PASSWORD: ""
   P-DB: 1
-  P-ENABLE: false
+  P-ENABLED: true
+
 
 ```
 ## 初始化
