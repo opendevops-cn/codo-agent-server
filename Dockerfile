@@ -26,6 +26,8 @@ COPY codo-agent-server .
 # 用来拷贝配置文件
 COPY conf.yaml .
 
+RUN chmod +x codo-agent-server
+
 EXPOSE 8080 8081 8082 8083
 
 CMD ./codo-agent-server --config-file=conf.yaml
