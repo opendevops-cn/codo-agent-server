@@ -1,12 +1,18 @@
 # codo-agent-server
 暂时只开放二进制文件，star 过万再开源
 
-## 服务端配置文件  `config.yaml`
+## 参考文档
+- [安装文档](./安装文档.md)
+- [更新日志](./更新日志.md)
+
+
+## 服务端配置文件  `conf.yaml`
 切记只有WS端口可以对外
 ```
 PORT: 8080
-WS-PORT: 9999
-PPROF-PORT: 9995
+WS-PORT: 8081
+RPC-PORT: 8082
+PROM-PORT: 8083
 BIND-ADDRESS: 0.0.0.0
 # 新版配置
 MQCONFIG:
