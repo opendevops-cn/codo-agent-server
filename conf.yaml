@@ -5,7 +5,7 @@ PROM-PORT: 8083
 BIND-ADDRESS: 0.0.0.0
 # 新版配置
 MQCONFIG:
-  ENABLED: false
+  ENABLED: true
   SCHEMA: "amqp"
   HOST: "127.0.0.1"
   PORT: 5672
