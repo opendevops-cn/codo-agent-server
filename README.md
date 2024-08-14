@@ -24,7 +24,7 @@ codo-agent-server --config-file=config.yaml migrate
 
 ## 启动 server
 ```
-codo-agent-server   --config-file=config.yaml
+codo-agent-server   --config-file=conf.yaml
 ```
 ## 启动 proxy  （可选）
 ```

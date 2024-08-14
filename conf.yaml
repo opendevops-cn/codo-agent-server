@@ -13,7 +13,7 @@ MQCONFIG:
   PASSWORD: "123456"
   VHOST: "codo"
 ROOT-PATH: E:\go\src\agent-server
-LOG-LEVEL: DEBUG
+LOG-LEVEL: INFO
 DB-CONFIG:
   DB-TYPE: mysql
   DB-USER: root
