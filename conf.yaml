@@ -1,19 +1,25 @@
+# (必填) HTTP 服务端口
 PORT: 8080
+# (必填) websocket 连接专用端口
 WS-PORT: 8081
-RPC-PORT: 8082
+# (推荐配置) 性能采集端口
+PPROF-PORT: 8082
+# (推荐配置) 指标采集端口
 PROM-PORT: 8083
+# (可以不填) GRPC 通信端口(暂时没用)
+RPC-PORT: 8084
+# (必填) 本机服务监听地址
 BIND-ADDRESS: 0.0.0.0
-# 新版配置
-MQCONFIG:
-  ENABLED: true
-  SCHEMA: "amqp"
-  HOST: "127.0.0.1"
-  PORT: 5672
-  USERNAME: "admin"
-  PASSWORD: "123456"
-  VHOST: "codo"
+
+
+# (必填) 日志存放文件夹
 ROOT-PATH: E:\go\src\agent-server
-LOG-LEVEL: INFO
+# (必填) 日志等级
+LOG-LEVEL: DEBUG
+
+
+
+# (必填) MYSQL 配置 用于数据备份存储
 DB-CONFIG:
   DB-TYPE: mysql
   DB-USER: root
@@ -23,14 +29,34 @@ DB-CONFIG:
   DB-TABLE-PREFIX: codo_
   DB-FILE: ""
   DB-PORT: 3306
+
+
+# (必填) REDIS 配置 用于实时数据存储
 REDIS:
   R-HOST: 127.0.0.1
   R-PORT: 6379
   R-PASSWORD: ""
   R-DB: 1
+
+# (推荐配置) RABBIT MQ配置
+MQCONFIG:
+  # 如果需要异步的下发+接受任务, 必须打开
+  ENABLED: true
+  SCHEMA: "amqp"
+  HOST: "127.0.0.1"
+  PORT: 5672
+  USERNAME: "admin"
+  PASSWORD: "123456"
+  VHOST: "codo"
+
+# (推荐配置) REDIS 发布订阅配置
+# 用于:
+#  CDMB 任务同步
+#  CODO 任务分发
 PUBLISH:
+  # 如果多个 agent-server 实例必须开启
+  P-ENABLED: true
   P-HOST: 127.0.0.1
   P-PORT: 6379
   P-PASSWORD: ""
-  P-DB: 1
-  P-ENABLED: false
+  P-DB: 2

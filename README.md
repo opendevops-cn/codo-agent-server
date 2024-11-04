@@ -9,6 +9,7 @@
 
 ## 参考文档
 - [Agent安装文档](./安装文档.md)
+- [云原生 Agent安装文档](./cloud-agent-operator/README.md)
 - [更新日志](./更新日志.md)
 
 
@@ -37,3 +38,5 @@ codo-agent --url ws://127.0.0.1:9999/api/v1/codo/agent?clientId=codo-test -s --l
 # 代理
 codo-agent --url ws://127.0.0.1:20800/api/v1/codo/agent?clientId=codo-test:8888 -s --log-dir /data/logs/codo --row-limit 2000 --client-type normal
 ```
+## 启动 云原生agent
+详情看 [云原生agent](./cloud-agent-operator/README.md)

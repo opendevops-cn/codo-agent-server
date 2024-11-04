@@ -1,0 +1,33 @@
+# [必选] 任务定义
+taskSpec:
+  # [必选] 任务展示名称
+  displayName: "cc-test"
+
+  # [必选] 任务步骤定义
+  # 任务有两种模式(只能选其一)
+  # - script 模式:
+  # - command 模式:
+  steps:
+    # [必选] 步骤名称
+    - name: "step1"
+      # [可选] 超时时间(默认60分钟)
+      # 持续时间字符串是可能有符号的十进制数字序列，每个十进制数字都带有可选的分数和单位后缀，
+      # 例如“300ms”、“-1.5h”或“2h45m”。有效的时间单位为“ns”、“us”（或“μs”）、“ms”、“s”、“m”、“h”。
+      timeout: "10s"
+      # [必选] 任务运行所处的镜像
+      image: "ccr.ccs.tencentyun.com/library/alpine:latest"
+      # [必选] 运行的脚本(与 command 二选一)
+      script: |
+        #!/bin/sh
+        echo "Hello World step1 FOO=$FOO"
+    - name: "step2"
+      image: "ccr.ccs.tencentyun.com/library/alpine:latest"
+      # [必选] 指定命令执行(与 script 二选一)
+      command: [ codo ]
+      args: [ "set-context", "abc=123" ]
+    - name: "step3"
+      image: "ccr.ccs.tencentyun.com/library/alpine:latest"
+      script: |
+        #!/bin/python
+        import os
+        print("Hello World step3 FOO=%s" % os.environ.get("FOO"))

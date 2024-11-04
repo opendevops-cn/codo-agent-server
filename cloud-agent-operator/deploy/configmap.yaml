@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloud-agent-operator-config
+data:
+  config.yaml: |
+    # agent 配置
+    agentConfig:
+      # 日志等级
+      LOG-LEVEL: "debug"
+      # RootPath 日志保存路径
+      # 用于：
+      # - 存储脚本文件
+      # - 存储密钥文件
+      # - 存储执行日志文件
+      # - 存储agent日志文件
+      ROOT-PATH: "/data/codo-agent"
+      # 连接服务地址
+      SERVER-ADDRESS: "ws://127.0.0.1:9999/api/v1/codo/agent?clientId=cloud-agent-operator:6666" # jamieyu测试环境
+      # 节点类型,当节点为master时，自动开启代理模式
+      NODE-TYPE: "operator"
+      # 业务ID
+      BIZ-ID: "525"
+      # 本地绑定ip（master模式），本地上报ip地址
+      BIND-IP: ""
+      # 本地绑定端口（master模式）
+      BIND-PORT: 20800
+      # 日志行数限制
+      ROW-LIMIT: 2000
+      # 最大执行命令数
+      MAX-EXEC-CMD: 100
+      # 以脚本路径作为工作目录
+      SCRIPT-PATH-AS-WD: false
+      # 强指脚本的工作目录
+      WORK-DIR: "/data/codo-work-dir"
+      # 日志清理间隔(单位：天)
+      LOG-CLEAN-INTERVAL: 30
+      
+    # redis 配置(用于领域事件分发, 以及数据缓存)
+    redisConfig:
+      # 地址
+      addr: "redis-service:6379"
+      # 密码
+      password: ""
+      # 数据库 index
+      db: 1
+      
+    # 可观测性配置
+    otel:
+      # 日志配置
+      log:
+        # 日志等级 DEBUG, INFO, WARN, ERROR, FATAL
+        level: "DEBUG"
+        # 日志格式 json, console
+        encoding:
+        # 日志文件路径
+        filepath: "/data/codo-work-dir/codo-agent.log"
+        # 日志文件切割大小(单位: MB)(默认 100MB)
+        maxSize: 100
+        # 日志文件切割周期(单位: 天)(默认 7天)
+        maxAge: 7
+        # 日志文件最大保留个数(单位: 个)(默认 10个)
+        maxBackups: 10
+      # 链路追踪配置(可以不开, 不采集的话)
+      trace:
+        # jaeger 配置 的 endpoint
+        endpoint: ""
+        # endpoint 是否是 https
+        insecure: true
+      # 数据指标 
+      metrics:
+        # 开启 exemplar
+        enableExemplar: true
+    # 镜像配置, 用于 cloud-agent 的运行时
+    imagesConfig:
+      # 运行时镜像(很重要)
+      entrypointImage: registry.cn-shanghai.aliyuncs.com/ss1917/cloud-agent-operator:v0.0.1
